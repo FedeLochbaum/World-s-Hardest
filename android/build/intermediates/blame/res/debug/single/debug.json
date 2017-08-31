@@ -4,16 +4,8 @@
         "source": "/home/trimegisto/Documentos/world-hardest/android/res/drawable-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/home/trimegisto/Documentos/tutorialGameLibGdx/tutorialLibgdx/android/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
-        "source": "/home/trimegisto/Documentos/tutorialGameLibGdx/tutorialLibgdx/android/res/drawable-hdpi/ic_launcher.png"
-    },
-    {
         "merged": "/home/trimegisto/Documentos/world-hardest/android/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
         "source": "/home/trimegisto/Documentos/world-hardest/android/res/drawable-xhdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/home/trimegisto/Documentos/tutorialGameLibGdx/tutorialLibgdx/android/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_launcher.png.flat",
-        "source": "/home/trimegisto/Documentos/tutorialGameLibGdx/tutorialLibgdx/android/res/drawable-xxxhdpi/ic_launcher.png"
     },
     {
         "merged": "/home/trimegisto/Documentos/world-hardest/android/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_launcher.png.flat",
@@ -26,17 +18,5 @@
     {
         "merged": "/home/trimegisto/Documentos/world-hardest/android/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
         "source": "/home/trimegisto/Documentos/world-hardest/android/res/drawable-hdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/home/trimegisto/Documentos/tutorialGameLibGdx/tutorialLibgdx/android/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_launcher.png.flat",
-        "source": "/home/trimegisto/Documentos/tutorialGameLibGdx/tutorialLibgdx/android/res/drawable-xxhdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/home/trimegisto/Documentos/tutorialGameLibGdx/tutorialLibgdx/android/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
-        "source": "/home/trimegisto/Documentos/tutorialGameLibGdx/tutorialLibgdx/android/res/drawable-xhdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/home/trimegisto/Documentos/tutorialGameLibGdx/tutorialLibgdx/android/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
-        "source": "/home/trimegisto/Documentos/tutorialGameLibGdx/tutorialLibgdx/android/res/drawable-mdpi/ic_launcher.png"
     }
 ]

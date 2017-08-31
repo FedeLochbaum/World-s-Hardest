@@ -7,8 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 public class MenuScreen extends MainScreen {
@@ -24,26 +26,31 @@ public class MenuScreen extends MainScreen {
     public MenuScreen(final Game game) {
         super(game);
 
-        Texture texture = game.getManager().get("60.png");
+        Texture texture = game.getManager().get("menu.jpg");
 
         stage = new Stage(new FitViewport(640, 360));
         skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
         logo = new Image(texture);
+
         play = new TextButton("Play", skin);
 
         play.addCaptureListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.startGame();
+                game.startBoard();
             }
         });
 
-        logo.setPosition(440 - logo.getWidth() / 2, 320 - logo.getHeight());
-        play.setPosition(40, 50);
-        play.setSize(200, 100);
 
-        stage.addActor(play);
+        logo.setPosition(250 - logo.getWidth() / 2, 360 - logo.getHeight());
+        logo.setSize(620, 360);
+
+
+        play.setPosition(120, 50);
+        play.setSize(400, 100);
+
         stage.addActor(logo);
+        stage.addActor(play);
 
     }
 

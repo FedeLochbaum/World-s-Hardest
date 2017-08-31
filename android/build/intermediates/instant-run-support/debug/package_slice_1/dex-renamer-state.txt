@@ -1,4 +1,4 @@
-#Wed Aug 30 14:39:26 ART 2017
+#Thu Aug 31 16:20:18 ART 2017
 base.0=/home/trimegisto/Documentos/world-hardest/android/build/intermediates/transforms/dexMerger/debug/1
 renamed.0=classes.dex
 file.0=/home/trimegisto/Documentos/world-hardest/android/build/intermediates/transforms/dexMerger/debug/1/classes.dex

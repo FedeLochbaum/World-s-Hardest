@@ -27,9 +27,6 @@ public class PlayerEntity extends Actor {
 
     private boolean alive = true;
 
-    private boolean jumping = false;
-
-    private boolean mustJump = true;
 
     public PlayerEntity(World worldD, Texture textureE, Vector2 pos){
         world = worldD;
@@ -44,49 +41,33 @@ public class PlayerEntity extends Actor {
         body = world.createBody(def);
 
         PolygonShape box = new PolygonShape();
-        box.setAsBox(0.5f, 0.5f);
+        box.setAsBox(0.2f, 0.2f);
         fixture = body.createFixture(box, 3);
         fixture.setUserData("player");
         box.dispose();
 
-        setSize(PIXELS_IN_METER, PIXELS_IN_METER);
+        setSize(20f, 20f);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        setPosition((body.getPosition().x - 0.5f) * PIXELS_IN_METER,
-                (body.getPosition().y - 0.5f) * PIXELS_IN_METER);
+        setPosition((body.getPosition().x - 0.2f) * PIXELS_IN_METER,
+                (body.getPosition().y - 0.2f) * PIXELS_IN_METER);
+
         batch.draw(texture, getX(), getY(), getWidth(), getHeight());
     }
 
     @Override
     public void act(float delta) {
         if (Gdx.input.justTouched()) {
-            jump();
-        }
 
-        if (mustJump) {
-            mustJump = false;
-            jump();
         }
 
         if (alive) {
-            float speedY = body.getLinearVelocity().y;
-            body.setLinearVelocity(PLAYER_SPEED, speedY);
+            //float speedY = body.getLinearVelocity().y;
+            //body.setLinearVelocity(PLAYER_SPEED, speedY);
         }
 
-        if (jumping) {
-            body.applyForceToCenter(0, - IMPULSE_JUMP * 1.15f, true);
-        }
-    }
-
-    public void jump() {
-        if (!jumping && alive) {
-            jumping = true;
-
-            Vector2 position = body.getPosition();
-            body.applyLinearImpulse(0, IMPULSE_JUMP, position.x, position.y, true);
-        }
     }
 
     public void detach() {
@@ -100,14 +81,6 @@ public class PlayerEntity extends Actor {
 
     public void setAlive(boolean alive) {
         this.alive = alive;
-    }
-
-    public void setJumping(boolean jumping) {
-        this.jumping = jumping;
-    }
-
-    public void setMustJump(boolean mustJump) {
-        this.mustJump = mustJump;
     }
 
 
