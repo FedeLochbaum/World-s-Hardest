@@ -1,6 +1,8 @@
 package com.mygdx.game.entities;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
@@ -10,6 +12,8 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+
+import java.security.Key;
 
 import static com.mygdx.game.entities.Constants.IMPULSE_JUMP;
 import static com.mygdx.game.entities.Constants.PIXELS_IN_METER;
@@ -28,7 +32,7 @@ public class PlayerEntity extends Actor {
     private boolean alive = true;
 
 
-    public PlayerEntity(World worldD, Texture textureE, Vector2 pos){
+    public PlayerEntity(World worldD, Texture textureE, Vector2 pos) {
         world = worldD;
         texture = textureE;
         createPlayer(pos);
@@ -59,15 +63,35 @@ public class PlayerEntity extends Actor {
 
     @Override
     public void act(float delta) {
-        if (Gdx.input.justTouched()) {
 
-        }
+
 
         if (alive) {
-            //float speedY = body.getLinearVelocity().y;
-            //body.setLinearVelocity(PLAYER_SPEED, speedY);
+            checkForMovements();
         }
 
+    }
+
+    private void checkForMovements() {
+
+        boolean upTouched = Gdx.input.isTouched() && Gdx.input.getY() < Gdx.graphics.getHeight() / 2 ;
+        if (upTouched)
+            body.setLinearVelocity(0, PLAYER_SPEED);
+
+        boolean downTouched = Gdx.input.isTouched() && Gdx.input.getY() > Gdx.graphics.getHeight() / 2 ;
+        if (downTouched)
+            body.setLinearVelocity(0, -PLAYER_SPEED);
+
+        boolean leftTouched = Gdx.input.isTouched() && Gdx.input.getX() < Gdx.graphics.getWidth() / 3;
+        if (leftTouched)
+            body.setLinearVelocity(-PLAYER_SPEED, 0);
+
+        boolean rightTouched = Gdx.input.isTouched() && Gdx.input.getX() > Gdx.graphics.getWidth() * 2 / 3;
+        if (rightTouched)
+            body.setLinearVelocity(PLAYER_SPEED, 0);
+
+        if(!upTouched && !downTouched && !leftTouched && !rightTouched)
+            body.setLinearVelocity(0, 0);
     }
 
     public void detach() {

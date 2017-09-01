@@ -51,7 +51,7 @@ public class GameScreen extends MainScreen {
                 if (areCollided(contact, "player", "enemy")){
                     if (player.isAlive()) {
                         player.setAlive(false);
-                        music.stop();
+                        //music.stop();
 
                         stage.addAction(
                                 Actions.sequence(
@@ -99,8 +99,8 @@ public class GameScreen extends MainScreen {
         stage.addActor(player);
 
 
-        music.setVolume(0.75f);
-        music.play();
+        //music.setVolume(0.75f);
+        //music.play();
     }
 
     @Override

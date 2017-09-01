@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
-public class BoardLvls extends MainScreen{
+public class BoardLvls extends MainScreen {
 
     private TextButton playLvl1;
 
