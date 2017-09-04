@@ -10,7 +10,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-import static com.mygdx.game.entities.Constants.PIXELS_IN_METER;
+import static com.mygdx.game.Constants.PIXELS_IN_METER;
 
 public class LevelEntity extends Actor{
 

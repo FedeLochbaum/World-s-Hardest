@@ -7,13 +7,13 @@
     format="10"
     ir-eligibility="COMPATIBLE"
     plugin-version="3.0.0-alpha7"
-    timestamp="1504299297572"
+    timestamp="1504548335700"
     token="-6781111478960835968"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="52" />
+        duration="0" />
     <task
         name="instant-run-dex"
         duration="0" />
@@ -25,7 +25,7 @@
         duration="1" />
 
     <artifact
-        location="/home/trimegisto/Documentos/world-hardest/android/build/intermediates/split-apk/debug/slices/slice_7.apk"
+        location="/home/trimegisto/Documentos/world-hardest/android/build/intermediates/split-apk/debug/slices/slice_3.apk"
         type="SPLIT" />
     <artifact
         location="/home/trimegisto/Documentos/world-hardest/android/build/outputs/apk/debug/android-debug.apk"
@@ -33,8 +33,14 @@
 
     <build
         build-mode="FULL"
-        timestamp="1504290821839"
+        timestamp="1504543568851"
         verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/home/trimegisto/Documentos/world-hardest/android/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/trimegisto/Documentos/world-hardest/android/build/outputs/apk/debug/android-debug.apk"
+            type="SPLIT_MAIN" />
         <artifact
             location="/home/trimegisto/Documentos/world-hardest/android/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
@@ -43,9 +49,6 @@
             type="SPLIT" />
         <artifact
             location="/home/trimegisto/Documentos/world-hardest/android/build/intermediates/split-apk/debug/slices/slice_0.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/trimegisto/Documentos/world-hardest/android/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
             location="/home/trimegisto/Documentos/world-hardest/android/build/intermediates/split-apk/debug/slices/slice_2.apk"
@@ -68,26 +71,32 @@
         <artifact
             location="/home/trimegisto/Documentos/world-hardest/android/build/intermediates/split-apk/debug/slices/slice_9.apk"
             type="SPLIT" />
-        <artifact
-            location="/home/trimegisto/Documentos/world-hardest/android/build/outputs/apk/debug/android-debug.apk"
-            type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
         ir-eligibility="COMPATIBLE"
-        timestamp="1504299003368"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/trimegisto/Documentos/world-hardest/android/build/outputs/apk/debug/android-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
-        ir-eligibility="COMPATIBLE"
-        timestamp="1504299297572"
+        timestamp="1504547867259"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/home/trimegisto/Documentos/world-hardest/android/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1504548168334"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/home/trimegisto/Documentos/world-hardest/android/build/outputs/apk/debug/android-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1504548335700"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/home/trimegisto/Documentos/world-hardest/android/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
             location="/home/trimegisto/Documentos/world-hardest/android/build/outputs/apk/debug/android-debug.apk"

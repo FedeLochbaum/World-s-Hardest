@@ -1,8 +1,6 @@
 package com.mygdx.game.entities;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
@@ -13,11 +11,8 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-import java.security.Key;
-
-import static com.mygdx.game.entities.Constants.IMPULSE_JUMP;
-import static com.mygdx.game.entities.Constants.PIXELS_IN_METER;
-import static com.mygdx.game.entities.Constants.PLAYER_SPEED;
+import static com.mygdx.game.Constants.PIXELS_IN_METER;
+import static com.mygdx.game.Constants.PLAYER_SPEED;
 
 public class PlayerEntity extends Actor {
 
@@ -31,6 +26,7 @@ public class PlayerEntity extends Actor {
 
     private boolean alive = true;
 
+    private int coins = 0;
 
     public PlayerEntity(World worldD, Texture textureE, Vector2 pos) {
         world = worldD;
@@ -63,13 +59,9 @@ public class PlayerEntity extends Actor {
 
     @Override
     public void act(float delta) {
-
-
-
-        if (alive) {
+        if (alive)
             checkForMovements();
-        }
-
+        else body.setLinearVelocity(0,0);
     }
 
     private void checkForMovements() {
@@ -107,5 +99,8 @@ public class PlayerEntity extends Actor {
         this.alive = alive;
     }
 
+    public void addCoin(){
+        coins++;
+    }
 
 }

@@ -3,6 +3,10 @@ package com.mygdx.game;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
+import com.mygdx.game.Screens.*;
+import com.mygdx.game.Screens.GameScreen;
+import com.mygdx.game.Screens.LoadingScreen;
+import com.mygdx.game.Screens.MenuScreen;
 
 public class Game extends com.badlogic.gdx.Game {
 
@@ -13,8 +17,11 @@ public class Game extends com.badlogic.gdx.Game {
 		manager = new AssetManager();
 
 		manager.load("menu.jpg", Texture.class);
+		manager.load("gameover.png", Texture.class);
 		manager.load("level1.png", Texture.class);
 		manager.load("player.png", Texture.class);
+		manager.load("enemy.png", Texture.class);
+		manager.load("coin.png", Texture.class);
 		manager.load("audio/song.ogg", Music.class);
 
 		loadScreen();
@@ -24,12 +31,12 @@ public class Game extends com.badlogic.gdx.Game {
 		return manager;
 	}
 
-	public void startGame(){
-		setScreen(new GameScreen(this));
+	public void startGame(GameScreen newLvl){
+		setScreen(newLvl);
 	}
 
 	public void gameOver(){
-		setScreen(new GameOverScreen(this));
+		setScreen(new com.mygdx.game.Screens.GameOverScreen(this));
 	}
 
 	public void menu(){
@@ -41,6 +48,6 @@ public class Game extends com.badlogic.gdx.Game {
 	}
 
 	public void startBoard(){
-		setScreen(new BoardLvls(this));
+		setScreen(new BoardLvlsScreen(this));
 	}
 }
