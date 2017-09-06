@@ -12,9 +12,10 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Touchpad;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.mygdx.game.Game;
-import com.mygdx.game.TouchPad;
 import com.mygdx.game.entities.CoinEntity;
 import com.mygdx.game.entities.EnemyEntity;
 import com.mygdx.game.entities.PlayerEntity;
@@ -34,7 +35,9 @@ public class GameScreen extends MainScreen {
 
     List<CoinEntity> coinList;
 
-    protected TouchPad touchPad;
+    private Skin skin;
+
+    //protected Touchpad touchpad;
 
     PlayerEntity player;
 
@@ -43,12 +46,20 @@ public class GameScreen extends MainScreen {
 
         music = game.getManager().get("audio/song.ogg");
 
+        skin = new Skin(Gdx.files.internal("skin2/uiskin.json"));
+
         stage = new Stage(new FillViewport(640, 360));
+
         world = new World(new Vector2(0, 0), true);
 
         enemyList = new ArrayList<EnemyEntity>();
 
         coinList = new ArrayList<CoinEntity>();
+
+//        touchpad = new Touchpad(100, skin);
+//
+//        touchpad.setSize(100,100);
+//        touchpad.setPosition(60,40);
 
         world.setContactListener(new ContactListener() {
 
@@ -104,7 +115,6 @@ public class GameScreen extends MainScreen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0.4f, 0.5f,0.8f,1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
 
         stage.act();
         world.step(delta, 6, 2);

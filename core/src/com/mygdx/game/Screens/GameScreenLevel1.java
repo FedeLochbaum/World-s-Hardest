@@ -37,6 +37,7 @@ public class GameScreenLevel1 extends com.mygdx.game.Screens.GameScreen {
 
         stage.addActor(lvl);
         stage.addActor(player);
+        //stage.addActor(touchpad);
 
         for (EnemyEntity e : enemyList) {
             stage.addActor(e);
@@ -53,6 +54,7 @@ public class GameScreenLevel1 extends com.mygdx.game.Screens.GameScreen {
     public void hide() {
         player.detach();
         player.remove();
+        //touchpad.remove();
 
         for (EnemyEntity e : enemyList) {
             e.remove();

@@ -10,6 +10,12 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.ui.Touchpad;
+import com.mygdx.game.Constants;
+
+import java.sql.Time;
+
+import sun.rmi.runtime.Log;
 
 import static com.mygdx.game.Constants.PIXELS_IN_METER;
 import static com.mygdx.game.Constants.PLAYER_SPEED;
@@ -60,30 +66,21 @@ public class PlayerEntity extends Actor {
     @Override
     public void act(float delta) {
         if (alive)
-            checkForMovements();
+            checkForMovements(delta);
         else body.setLinearVelocity(0,0);
     }
 
-    private void checkForMovements() {
+    private void checkForMovements(float delta) {
 
-        boolean upTouched = Gdx.input.isTouched() && Gdx.input.getY() < Gdx.graphics.getHeight() / 2 ;
-        if (upTouched)
-            body.setLinearVelocity(0, PLAYER_SPEED);
+        if (Gdx.input.isTouched()) {
+            Vector2 touch = new Vector2(Gdx.input.getX() / Constants.PIXELS_IN_METER, Gdx.input.getY() / Constants.PIXELS_IN_METER);
 
-        boolean downTouched = Gdx.input.isTouched() && Gdx.input.getY() > Gdx.graphics.getHeight() / 2 ;
-        if (downTouched)
-            body.setLinearVelocity(0, -PLAYER_SPEED);
+            Vector2 sub = new Vector2(touch.x - body.getPosition().x, touch.y - body.getPosition().y);
+            Vector2 newPosition = sub.nor().scl(PLAYER_SPEED);
 
-        boolean leftTouched = Gdx.input.isTouched() && Gdx.input.getX() < Gdx.graphics.getWidth() / 3;
-        if (leftTouched)
-            body.setLinearVelocity(-PLAYER_SPEED, 0);
-
-        boolean rightTouched = Gdx.input.isTouched() && Gdx.input.getX() > Gdx.graphics.getWidth() * 2 / 3;
-        if (rightTouched)
-            body.setLinearVelocity(PLAYER_SPEED, 0);
-
-        if(!upTouched && !downTouched && !leftTouched && !rightTouched)
-            body.setLinearVelocity(0, 0);
+            body.setLinearVelocity(newPosition.x, newPosition.y);
+            //setPosition(newPosition.x, newPosition.y);
+        } else body.setLinearVelocity(0,0);
     }
 
     public void detach() {
