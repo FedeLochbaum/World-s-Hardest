@@ -50,4 +50,5 @@ public class Game extends com.badlogic.gdx.Game {
 	public void startBoard(){
 		setScreen(new BoardLvlsScreen(this));
 	}
+
 }

@@ -76,16 +76,9 @@ public class GameScreen extends MainScreen {
                                 )
                         );
                     }
-                }  else if (areCollided(contact, "player", "coin")){
-                    if (contact.getFixtureB().equals("coin")){
-                        //contact.getFixtureB().
-                    }
-                        //world.destroyBody(contact.getFixtureB().getBody());
-                    else {
-
-                    }//world.destroyBody(contact.getFixtureA().getBody());
-
-                    player.addCoin();
+                } else if (areCollided(contact, "player", "coin")) {
+                    if (contact.getFixtureA().getUserData().equals("coin")){
+                    } else contact.getFixtureB().getShape().dispose();
                 }
             }
 
@@ -112,6 +105,7 @@ public class GameScreen extends MainScreen {
         Gdx.gl.glClearColor(0.4f, 0.5f,0.8f,1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+
         stage.act();
         world.step(delta, 6, 2);
         stage.draw();
@@ -122,6 +116,5 @@ public class GameScreen extends MainScreen {
         stage.dispose();
         world.dispose();
     }
-
 
 }
