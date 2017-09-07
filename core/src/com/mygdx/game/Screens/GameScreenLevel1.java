@@ -23,17 +23,17 @@ public class GameScreenLevel1 extends com.mygdx.game.Screens.GameScreen {
         Texture enemyTexture = getMainGame().getManager().get("enemy.png");
         Texture coinTexture = getMainGame().getManager().get("coin.png");
 
-        player = new PlayerEntity(world, playerTexture, new Vector2(3.5f,5.5f));
+        player = new PlayerEntity(playerTexture, new Vector2(200f,200f));
 
-        EnemyEntity enemy = new EnemyEntity(world, enemyTexture, new Vector2(7f,4f));
+        EnemyEntity enemy = new EnemyEntity(enemyTexture, new Vector2(300f,200f));
 
-        CoinEntity coin = new CoinEntity(world, coinTexture, new Vector2(6f,4f));
+        CoinEntity coin = new CoinEntity(coinTexture, new Vector2(250f,200f));
 
         enemyList.add(enemy);
 
         coinList.add(coin);
 
-        lvl  = new LevelEntity(world, lvlTexture);
+        lvl  = new LevelEntity(lvlTexture);
 
         stage.addActor(lvl);
         stage.addActor(player);

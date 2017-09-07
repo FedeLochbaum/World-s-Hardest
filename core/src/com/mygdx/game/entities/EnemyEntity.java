@@ -3,57 +3,29 @@ package com.mygdx.game.entities;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
-import com.badlogic.gdx.physics.box2d.Fixture;
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-
-import static com.mygdx.game.Constants.PIXELS_IN_METER;
 
 public class EnemyEntity extends Actor {
 
     private Texture texture;
 
-    private World world;
-
-    private Body body;
-
-    private Fixture fixture;
-
-    public EnemyEntity(World worldD, Texture textureE, Vector2 pos) {
-        world = worldD;
+    public EnemyEntity(Texture textureE, Vector2 pos) {
         texture = textureE;
         createEnemy(pos);
     }
 
     private void createEnemy(Vector2 pos) {
-        BodyDef def = new BodyDef();
-        def.position.set(pos);
-        def.type = BodyDef.BodyType.DynamicBody;
-        body = world.createBody(def);
-
-        CircleShape ball = new CircleShape();
-        ball.setRadius(0.2f);
-        fixture = body.createFixture(ball, 3);
-        fixture.setUserData("enemy");
-        ball.dispose();
-
+        setPosition(pos.x, pos.y);
         setSize(20f, 20f);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        setPosition((body.getPosition().x - 0.2f) * PIXELS_IN_METER,
-                (body.getPosition().y - 0.2f) * PIXELS_IN_METER);
-
+        setPosition(getX(), getY());
         batch.draw(texture, getX(), getY(), getWidth(), getHeight());
     }
 
     public void detach(){
-        body.destroyFixture(fixture);
-        world.destroyBody(body);
     }
 
     @Override
@@ -65,29 +37,5 @@ public class EnemyEntity extends Actor {
 
     public void setTexture(Texture texture) {
         this.texture = texture;
-    }
-
-    public World getWorld() {
-        return world;
-    }
-
-    public void setWorld(World world) {
-        this.world = world;
-    }
-
-    public Body getBody() {
-        return body;
-    }
-
-    public void setBody(Body body) {
-        this.body = body;
-    }
-
-    public Fixture getFixture() {
-        return fixture;
-    }
-
-    public void setFixture(Fixture fixture) {
-        this.fixture = fixture;
     }
 }
