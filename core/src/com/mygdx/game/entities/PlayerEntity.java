@@ -2,45 +2,33 @@ package com.mygdx.game.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.mygdx.game.Constants;
+import com.badlogic.gdx.utils.Array;
+import com.mygdx.game.CollisionDetector;
 
 import static com.mygdx.game.Constants.PLAYER_SPEED;
 
-public class PlayerEntity extends Actor {
-
-    private Texture texture;
+public class PlayerEntity extends Entity {
 
     private boolean alive = true;
 
     private int coins = 0;
 
-    public PlayerEntity(Texture textureE, Vector2 pos) {
-        texture = textureE;
-        createPlayer(pos);
-    }
-
-    private void createPlayer(Vector2 pos) {
-        setPosition(pos.x, pos.y);
-        setSize(20f, 20f);
-    }
-
-    @Override
-    public void draw(Batch batch, float parentAlpha) {
-        setPosition(getX(), getY());
-
-        batch.draw(texture, getX(), getY(), getWidth(), getHeight());
+    public PlayerEntity(Texture textureE, Vector2 pos, Vector2 size) {
+        super(textureE, pos, size);
+        setName("Player");
     }
 
     @Override
     public void act(float delta) {
-        if (alive)
-            checkForMovements(delta);
+        if (alive) {
+            movementCheck(delta);
+            collisionCheck();
+        }
     }
 
-    private void checkForMovements(float delta) {
+    private void movementCheck(float delta) {
 
         if (Gdx.input.isTouched()) {
 
@@ -54,34 +42,25 @@ public class PlayerEntity extends Actor {
         }
     }
 
+    private void collisionCheck(){
+        Array<Actor> actors = CollisionDetector.entitiesCollidingWith(this);
+
+        for (Actor actor: actors) {
+            switch (actor.getName()){
+                case "Enemy":
+                    alive = false;
+                    break;
+                case "Coin":
+                    coins++;
+                    actor.remove();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    }
+
     public void detach() {}
-
-    public boolean isAlive() {
-        return alive;
-    }
-
-    public void setAlive(boolean alive) {
-        this.alive = alive;
-    }
-
-    public void addCoin(){
-        coins++;
-    }
-
-    public Texture getTexture() {
-        return texture;
-    }
-
-    public void setTexture(Texture texture) {
-        this.texture = texture;
-    }
-
-    public int getCoins() {
-        return coins;
-    }
-
-    public void setCoins(int coins) {
-        this.coins = coins;
-    }
 
 }

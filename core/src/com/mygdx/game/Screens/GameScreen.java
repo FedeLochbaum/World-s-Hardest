@@ -19,7 +19,7 @@ public class GameScreen extends MainScreen {
 
     Stage stage;
 
-    private Music music;
+    Music music;
 
     List<EnemyEntity> enemyList;
 
@@ -27,7 +27,6 @@ public class GameScreen extends MainScreen {
 
     private Skin skin;
 
-    //protected Touchpad touchpad;
 
     PlayerEntity player;
 
@@ -43,11 +42,6 @@ public class GameScreen extends MainScreen {
         enemyList = new ArrayList<EnemyEntity>();
 
         coinList = new ArrayList<CoinEntity>();
-
-//        touchpad = new Touchpad(100, skin);
-//
-//        touchpad.setSize(100,100);
-//        touchpad.setPosition(60,40);
 
     }
 
