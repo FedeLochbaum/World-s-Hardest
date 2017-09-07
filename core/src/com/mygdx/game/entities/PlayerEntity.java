@@ -63,4 +63,8 @@ public class PlayerEntity extends Entity {
 
     public void detach() {}
 
+    public boolean isAlive() {
+        return alive;
+    }
+
 }

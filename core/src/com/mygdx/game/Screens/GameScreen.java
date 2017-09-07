@@ -27,7 +27,6 @@ public class GameScreen extends MainScreen {
 
     private Skin skin;
 
-
     PlayerEntity player;
 
     public GameScreen(final Game game) {
@@ -45,10 +44,14 @@ public class GameScreen extends MainScreen {
 
     }
 
+
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0.4f, 0.5f,0.8f,1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        if(!player.isAlive())
+            getMainGame().gameOver();
 
         stage.act();
         stage.draw();
