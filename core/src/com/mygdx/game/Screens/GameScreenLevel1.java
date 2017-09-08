@@ -1,5 +1,7 @@
 package com.mygdx.game.Screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.CollisionDetector;
@@ -7,7 +9,6 @@ import com.mygdx.game.Game;
 import com.mygdx.game.entities.CoinEntity;
 import com.mygdx.game.entities.EnemyEntity;
 import com.mygdx.game.entities.LevelEntity;
-import com.mygdx.game.entities.PlayerEntity;
 
 public class GameScreenLevel1 extends com.mygdx.game.Screens.GameScreen {
 
@@ -19,24 +20,16 @@ public class GameScreenLevel1 extends com.mygdx.game.Screens.GameScreen {
 
     @Override
     public void show() {
-        Texture playerTexture = getMainGame().getManager().get("player.png");
         Texture lvlTexture = getMainGame().getManager().get("level1.png");
-        Texture enemyTexture = getMainGame().getManager().get("enemy.png");
-        Texture coinTexture = getMainGame().getManager().get("coin.png");
 
-        player = new PlayerEntity(playerTexture, new Vector2(200f,200f), new Vector2(20,20));
+        Pixmap pixmap = new Pixmap(Gdx.files.internal("bitmaps/level.bmp"));
 
-        EnemyEntity enemy = new EnemyEntity(enemyTexture, new Vector2(300f,180f), new Vector2(20,20));
-
-        CoinEntity coin = new CoinEntity(coinTexture, new Vector2(250f,180f), new Vector2(20,20));
-
-        enemyList.add(enemy);
-
-        coinList.add(coin);
+        renderMapWithPixmap(pixmap);
 
         lvl  = new LevelEntity(lvlTexture, new Vector2(0,0), new Vector2(640,360));
 
         stage.addActor(lvl);
+
         stage.addActor(player);
 
         for (EnemyEntity e : enemyList) {
@@ -52,6 +45,8 @@ public class GameScreenLevel1 extends com.mygdx.game.Screens.GameScreen {
         music.setVolume(0.75f);
         music.play();
     }
+
+
 
     @Override
     public void hide() {
