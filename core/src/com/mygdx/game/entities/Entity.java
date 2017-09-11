@@ -30,6 +30,10 @@ public class Entity extends Actor {
         batch.draw(texture, getX(), getY(), getWidth(), getHeight());
     }
 
+    public void contactWith(EnemyEntity enemyEntity){}
+
+    public void contactWith(PlayerEntity playerEntity){}
+
     public Texture getTexture() {
         return texture;
     }

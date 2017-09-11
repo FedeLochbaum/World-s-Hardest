@@ -18,10 +18,10 @@ public class Game extends com.badlogic.gdx.Game {
 
 		manager.load("menu.jpg", Texture.class);
 		manager.load("gameover.png", Texture.class);
-		manager.load("level1.png", Texture.class);
 		manager.load("player.png", Texture.class);
 		manager.load("enemy.png", Texture.class);
 		manager.load("coin.png", Texture.class);
+		manager.load("blackBox.png", Texture.class);
 		manager.load("audio/song.ogg", Music.class);
 
 		loadScreen();

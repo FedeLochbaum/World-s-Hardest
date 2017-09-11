@@ -4,19 +4,22 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.game.entities.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class CollisionDetector {
 
-    private static Array<Actor> actors;
+    private static List<Entity> actors;
 
-    public static void setEntities(Array<Actor> acs){
+    public static void setEntities(List<Entity> acs){
         actors = acs;
     }
 
-    public static Array<Actor> entitiesCollidingWith(Actor actor) {
-        Array<Actor> res = new Array<>();
+    public static List<Entity> entitiesCollidingWith(Actor actor) {
+        List<Entity> res = new ArrayList<Entity>();
 
-        for (Actor i: actors) {
+        for (Entity i: actors) {
             if(actor != i && isCollider((Entity)actor,(Entity)i))
                 res.add(i);
         }

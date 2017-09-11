@@ -4,10 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mygdx.game.CollisionDetector;
 import com.mygdx.game.Game;
-import com.mygdx.game.entities.CoinEntity;
-import com.mygdx.game.entities.EnemyEntity;
+import com.mygdx.game.entities.Entity;
 import com.mygdx.game.entities.LevelEntity;
 
 public class GameScreenLevel1 extends com.mygdx.game.Screens.GameScreen {
@@ -20,27 +20,18 @@ public class GameScreenLevel1 extends com.mygdx.game.Screens.GameScreen {
 
     @Override
     public void show() {
-        Texture lvlTexture = getMainGame().getManager().get("level1.png");
 
-        Pixmap pixmap = new Pixmap(Gdx.files.internal("bitmaps/level.bmp"));
+        Pixmap pixmap = new Pixmap(Gdx.files.internal("bitmaps/level1.bmp"));
 
         renderMapWithPixmap(pixmap);
 
-        lvl  = new LevelEntity(lvlTexture, new Vector2(0,0), new Vector2(640,360));
-
-        stage.addActor(lvl);
-
         stage.addActor(player);
 
-        for (EnemyEntity e : enemyList) {
+        for (Entity e : entities) {
             stage.addActor(e);
         }
 
-        for (CoinEntity c : coinList) {
-            stage.addActor(c);
-        }
-
-        CollisionDetector.setEntities(stage.getActors());
+        CollisionDetector.setEntities(entities);
 
         music.setVolume(0.75f);
         music.play();
@@ -53,16 +44,9 @@ public class GameScreenLevel1 extends com.mygdx.game.Screens.GameScreen {
         player.detach();
         player.remove();
 
-        for (EnemyEntity e : enemyList) {
+        for (Entity e : entities) {
             e.remove();
         }
-
-        for (CoinEntity c : coinList) {
-            c.remove();
-        }
-
-        lvl.detach();
-        lvl.remove();
 
     }
 

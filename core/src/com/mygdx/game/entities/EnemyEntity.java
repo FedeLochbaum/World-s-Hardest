@@ -2,6 +2,9 @@ package com.mygdx.game.entities;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.CollisionDetector;
+
+import java.util.List;
 
 public class EnemyEntity extends Entity {
 
@@ -14,6 +17,20 @@ public class EnemyEntity extends Entity {
     }
 
     @Override
-    public void act(float delta) {}
+    public void contactWith(PlayerEntity playerEntity) {
+        playerEntity.die();
+    }
 
+    @Override
+    public void act(float delta) {
+        collisionCheck();
+    }
+
+    private void collisionCheck(){
+        List<Entity> actors = CollisionDetector.entitiesCollidingWith(this);
+
+        for (Entity actor: actors) {
+            actor.contactWith(this);
+        }
+    }
 }

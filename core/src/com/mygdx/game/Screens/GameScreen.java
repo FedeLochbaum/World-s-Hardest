@@ -7,13 +7,14 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FillViewport;
-import com.mygdx.game.CollisionDetector;
 import com.mygdx.game.Game;
+import com.mygdx.game.entities.BlockEntity;
 import com.mygdx.game.entities.CoinEntity;
 import com.mygdx.game.entities.EnemyEntity;
+import com.mygdx.game.entities.Entity;
 import com.mygdx.game.entities.PlayerEntity;
 
 import java.util.ArrayList;
@@ -25,11 +26,7 @@ public class GameScreen extends MainScreen {
 
     Music music;
 
-    List<EnemyEntity> enemyList;
-
-    List<CoinEntity> coinList;
-
-    private Skin skin;
+    List<Entity> entities;
 
     PlayerEntity player;
 
@@ -38,20 +35,16 @@ public class GameScreen extends MainScreen {
 
         music = game.getManager().get("audio/song.ogg");
 
-        skin = new Skin(Gdx.files.internal("skin2/uiskin.json"));
-
         stage = new Stage(new FillViewport(640, 360));
 
-        enemyList = new ArrayList<EnemyEntity>();
-
-        coinList = new ArrayList<CoinEntity>();
-
+        entities = new ArrayList<Entity>();
     }
 
     void renderMapWithPixmap(Pixmap pixmap) {
         Texture playerTexture = getMainGame().getManager().get("player.png");
         Texture enemyTexture = getMainGame().getManager().get("enemy.png");
         Texture coinTexture = getMainGame().getManager().get("coin.png");
+        Texture blockTexture = getMainGame().getManager().get("blackBox.png");
 
         int width = pixmap.getWidth();
         int height = pixmap.getHeight();
@@ -59,21 +52,31 @@ public class GameScreen extends MainScreen {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 int pixel = pixmap.getPixel(x, y);
+                Vector2 position = new Vector2((stage.getWidth() * x) / width,(stage.getHeight() * y) / height);
                 switch (pixel) {
-                    case 255:
-                        //space
+                    case -824246273:
+                        //Exterior
                         break;
-                    case 16711935:
-                        player = new PlayerEntity(playerTexture, new Vector2(x,y), new Vector2(20,20));
+                    case -1660965377:
+                        //suelo verde
+                        break;
+                    case -1:
+                        //suelo blanco de juego
+                        break;
+                    case -140769025:
+                        //meta
+                        break;
+                    case 255:
+                        entities.add(new BlockEntity(blockTexture, position, new Vector2(8,8)));
+                        break;
+                    case 279280639:
+                        player = new PlayerEntity(playerTexture, position, new Vector2(15,15));
                         break;
                     case -16776961:
-                        enemyList.add(new EnemyEntity(enemyTexture, new Vector2(x,y), new Vector2(20,20)));
+                        entities.add(new EnemyEntity(enemyTexture, position, new Vector2(15,15)));
                         break;
-                    case 7077887:
-                        coinList.add(new CoinEntity(coinTexture, new Vector2(x,y), new Vector2(20,20)));
-                        break;
-                    case -134283009:
-                        //finish
+                    case -403223809:
+                        entities.add(new CoinEntity(coinTexture, position, new Vector2(15,15)));
                         break;
                     default:
                         break;

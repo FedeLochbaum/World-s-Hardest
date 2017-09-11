@@ -14,8 +14,10 @@ public class CoinEntity extends Entity {
     public void detach(){
     }
 
-    public void die(){
-        addAction(Actions.removeActor());
+    @Override
+    public void contactWith(PlayerEntity playerEntity) {
+        playerEntity.setCoins(playerEntity.getCoins() + 1);
+        remove();
     }
 
     @Override
