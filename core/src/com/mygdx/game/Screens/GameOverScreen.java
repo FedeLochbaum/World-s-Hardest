@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.FillViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.Game;
 
 public class GameOverScreen extends MainScreen {
@@ -27,7 +28,7 @@ public class GameOverScreen extends MainScreen {
     public GameOverScreen(final Game game) {
         super(game);
         Texture texture = game.getManager().get("gameover.png");
-        stage = new Stage(new FillViewport(640,360));
+        stage = new Stage(new ScreenViewport());
         skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 
         gameOver = new Image(texture);

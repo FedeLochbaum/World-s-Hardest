@@ -7,6 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.Game;
 
 public class LoadingScreen extends MainScreen {
@@ -20,11 +21,11 @@ public class LoadingScreen extends MainScreen {
     public LoadingScreen(Game game) {
         super(game);
 
-        stage = new Stage(new FitViewport(640, 360));
+        stage = new Stage(new ScreenViewport());
         skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 
         loading = new Label("Loading...", skin);
-        loading.setPosition(320 - loading.getWidth() / 2, 180 - loading.getHeight() / 2);
+        loading.setPosition((stage.getWidth()/2) - (loading.getWidth() / 2), 180 - loading.getHeight() / 2);
         stage.addActor(loading);
 
     }

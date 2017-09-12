@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.Game;
 
 public class BoardLvlsScreen extends MainScreen {
@@ -22,7 +23,7 @@ public class BoardLvlsScreen extends MainScreen {
     public BoardLvlsScreen(final Game game) {
         super(game);
 
-        stage = new Stage(new FitViewport(640, 360));
+        stage = new Stage(new ScreenViewport());
         skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 
         playLvl1 = new TextButton("Level 1", skin);
@@ -35,7 +36,7 @@ public class BoardLvlsScreen extends MainScreen {
         });
 
         playLvl1.setSize(100, 80);
-        playLvl1.setPosition(50, 250);
+        playLvl1.setPosition(50, stage.getHeight() - (playLvl1.getHeight() * 5/4) );
 
         stage.addActor(playLvl1);
     }

@@ -15,8 +15,8 @@ public class RenderEngine {
 
     public void render(float width, float height) {
         for (Entity entity : entities){
-            Vector2 pos = entity.getPhysicPosition();
-            entity.setPosition(pos.x * width, pos.y * height);
+            Vector2 physicPos = entity.getPhysicPosition();
+            entity.setPosition(physicPos.x * width, physicPos.y * height);
         }
     }
 

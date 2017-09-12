@@ -33,7 +33,7 @@ public class PhysicEngine {
 
             Vector2 newSpeed = sub.nor().scl(player.getSpeed());
 
-            player.setSpeed(newSpeed); //setPosition(getX() + newPosition.x, (getY() + ( - newPosition.y)));
+            player.setSpeed(newSpeed);
         }
     }
 

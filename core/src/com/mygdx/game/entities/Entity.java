@@ -18,25 +18,22 @@ public class Entity extends Actor {
 
     public Entity(Texture textureE, Vector2 pos, Vector2 size, Vector2 speedV) {
         speed = speedV;
-        texture = textureE;
-        create(pos, size);
-        bounds = new Rectangle(getX(), getY(), getWidth(), getHeight());
-    }
-
-    private void create(Vector2 pos, Vector2 size) {
         physicPosition = pos;
-        //setPosition(pos.x, pos.y);
+
+        texture = textureE;
+
         setSize(size.x,size.y);
+        bounds = new Rectangle(pos.x, pos.y, getWidth(), getHeight());
     }
 
     public void updatePosition(float delta){
-        physicPosition = physicPosition.scl(delta).scl(speed);
+        physicPosition = physicPosition.add(speed).scl(delta);
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         bounds.setPosition(physicPosition);
-        //setPosition(physicPosition.x, physicPosition.y);
+
         batch.draw(texture, getX(), getY(), getWidth(), getHeight());
     }
 

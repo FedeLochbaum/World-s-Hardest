@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.Game;
 
 public class MenuScreen extends MainScreen {
@@ -27,7 +28,7 @@ public class MenuScreen extends MainScreen {
 
         Texture texture = game.getManager().get("menu.jpg");
 
-        stage = new Stage(new FitViewport(640, 360));
+        stage = new Stage(new ScreenViewport());
         skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
         logo = new Image(texture);
 
@@ -40,13 +41,10 @@ public class MenuScreen extends MainScreen {
             }
         });
 
+        logo.setSize(stage.getWidth(),stage.getHeight());
 
-        logo.setPosition(250 - logo.getWidth() / 2, 360 - logo.getHeight());
-        logo.setSize(620, 360);
-
-
-        play.setPosition(120, 50);
         play.setSize(400, 100);
+        play.setPosition((stage.getWidth()/2) - (play.getWidth()/2), 50);
 
         stage.addActor(logo);
         stage.addActor(play);

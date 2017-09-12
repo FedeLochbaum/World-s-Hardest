@@ -2,9 +2,6 @@ package com.mygdx.game.entities;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.game.CollisionDetector;
-
-import java.util.List;
 
 public class EnemyEntity extends Entity {
 

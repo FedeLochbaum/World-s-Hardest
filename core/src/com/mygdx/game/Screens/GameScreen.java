@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.Game;
@@ -40,7 +41,7 @@ public class GameScreen extends MainScreen {
 
         music = game.getManager().get("audio/song.ogg");
 
-        stage = new Stage(new ScreenViewport());//new FillViewport(640, 360));
+        stage = new Stage(new ScreenViewport());
 
         entities = new ArrayList<Entity>();
 
@@ -99,7 +100,7 @@ public class GameScreen extends MainScreen {
     }
 
 
-    void renderMapWithPixmap(Pixmap pixmap) {
+    private void renderMapWithPixmap(Pixmap pixmap) {
         Texture playerTexture = getMainGame().getManager().get("player.png");
         Texture enemyTexture = getMainGame().getManager().get("enemy.png");
         Texture coinTexture = getMainGame().getManager().get("coin.png");
