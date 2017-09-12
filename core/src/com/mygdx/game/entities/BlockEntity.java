@@ -7,9 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class BlockEntity extends Entity {
 
-    public BlockEntity (Texture textureE, Vector2 pos, Vector2 size) {
-        super(textureE, pos, size);
-        getBounds();
+    public BlockEntity (Texture textureE, Vector2 pos, Vector2 size, Vector2 speedV) {
+        super(textureE, pos, size, speedV);
         setName("Block");
     }
 
@@ -22,7 +21,7 @@ public class BlockEntity extends Entity {
 
     @Override
     public void contactWith(PlayerEntity playerEntity) {
-        playerEntity.setSpeed(0f);
+        //playerEntity.setSpeed(0f);
     }
 
     @Override

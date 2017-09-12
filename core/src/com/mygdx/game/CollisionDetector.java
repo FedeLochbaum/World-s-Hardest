@@ -10,23 +10,17 @@ import java.util.List;
 
 public class CollisionDetector {
 
-    private static List<Entity> actors;
+    public List<Entity> entitiesCollidingWith(List<Entity> entities, Entity actor) {
+        List<Entity> res = new ArrayList<>();
 
-    public static void setEntities(List<Entity> acs){
-        actors = acs;
-    }
-
-    public static List<Entity> entitiesCollidingWith(Actor actor) {
-        List<Entity> res = new ArrayList<Entity>();
-
-        for (Entity i: actors) {
-            if(actor != i && isCollider((Entity)actor,(Entity)i))
+        for (Entity i: entities) {
+            if(actor != i && isCollider(actor, i))
                 res.add(i);
         }
         return res;
     }
 
-    private static boolean isCollider(Entity ac1, Entity ac2){
+    private boolean isCollider(Entity ac1, Entity ac2){
         return ac1.getBounds().overlaps(ac2.getBounds());
     }
 

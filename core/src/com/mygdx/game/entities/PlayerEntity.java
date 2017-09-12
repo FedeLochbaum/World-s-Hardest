@@ -11,12 +11,10 @@ public class PlayerEntity extends Entity {
 
     private boolean alive = true;
 
-    private float speed = 100f;
-
     private int coins = 0;
 
-    public PlayerEntity(Texture textureE, Vector2 pos, Vector2 size) {
-        super(textureE, pos, size);
+    public PlayerEntity(Texture textureE, Vector2 pos, Vector2 size, Vector2 speedV) {
+        super(textureE, pos, size, speedV);
         setName("Player");
     }
 
@@ -26,37 +24,29 @@ public class PlayerEntity extends Entity {
 
     @Override
     public void act(float delta) {
-        if (alive) {
-            movementCheck(delta);
-            collisionCheck();
-        }
     }
 
-    private void movementCheck(float delta) {
-        if (speed == 0f)
-            speed = 100f;
-
-        if (Gdx.input.isTouched()) {
-
-            Vector2 touch = new Vector2(Gdx.input.getX(), Gdx.input.getY());
-
-            Vector2 sub = new Vector2(touch.x - getX(),  touch.y - getY());
-
-            Vector2 newPosition = sub.nor().scl(delta).scl(speed);
-
-            setPosition(getX() + newPosition.x, (getY() + ( - newPosition.y)));//newPosition.x, newPosition.y);
-        }
 
 
-    }
+//        if (Gdx.input.isTouched()) {
+//
+//            Vector2 touch = new Vector2(Gdx.input.getX(), Gdx.input.getY());
+//
+//            Vector2 sub = new Vector2(touch.x - getX(),  touch.y - getY());
+//
+//            Vector2 newPosition = sub.nor().scl(delta).scl(speed);
+//
+//            setPosition(getX() + newPosition.x, (getY() + ( - newPosition.y)));//newPosition.x, newPosition.y);
+//        }
 
-    private void collisionCheck(){
-        List<Entity> actors = CollisionDetector.entitiesCollidingWith(this);
 
-        for (Entity actor: actors) {
-            actor.contactWith(this);
-        }
-    }
+//    private void collisionCheck(){
+//        List<Entity> actors = CollisionDetector.entitiesCollidingWith(this);
+//
+//        for (Entity actor: actors) {
+//            actor.contactWith(this);
+//        }
+//    }
 
     public int getCoins() {
         return coins;
@@ -64,14 +54,6 @@ public class PlayerEntity extends Entity {
 
     public void setCoins(int coins) {
         this.coins = coins;
-    }
-
-    public float getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(float speed) {
-        this.speed = speed;
     }
 
     public void detach() {}

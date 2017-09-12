@@ -8,8 +8,8 @@ import java.util.List;
 
 public class EnemyEntity extends Entity {
 
-    public EnemyEntity(Texture textureE, Vector2 pos, Vector2 size) {
-        super(textureE, pos, size);
+    public EnemyEntity(Texture textureE, Vector2 pos, Vector2 size, Vector2 speedV) {
+        super(textureE, pos, size, speedV);
         setName("Enemy");
     }
 
@@ -23,14 +23,6 @@ public class EnemyEntity extends Entity {
 
     @Override
     public void act(float delta) {
-        collisionCheck();
     }
 
-    private void collisionCheck(){
-        List<Entity> actors = CollisionDetector.entitiesCollidingWith(this);
-
-        for (Entity actor: actors) {
-            actor.contactWith(this);
-        }
-    }
 }

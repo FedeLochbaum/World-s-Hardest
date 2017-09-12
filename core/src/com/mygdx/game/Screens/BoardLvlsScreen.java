@@ -30,7 +30,7 @@ public class BoardLvlsScreen extends MainScreen {
         playLvl1.addCaptureListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.startGame(new GameScreenLevel1(game));
+                game.startGame(new GameScreen(game));
             }
         });
 

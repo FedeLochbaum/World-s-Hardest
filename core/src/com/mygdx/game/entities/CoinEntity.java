@@ -6,8 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class CoinEntity extends Entity {
 
-    public CoinEntity (Texture textureE, Vector2 pos, Vector2 size) {
-        super(textureE, pos, size);
+    public CoinEntity (Texture textureE, Vector2 pos, Vector2 size, Vector2 speedV) {
+        super(textureE, pos, size, speedV);
         setName("Coin");
     }
 
